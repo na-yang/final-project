@@ -79,7 +79,31 @@ hist(rounded_age)
 ```
 
 ## Write and use a function
-```{r}
 
+standard deviation:
+```{r}
+#testing first by making a dataset
+x <- c(20,4,67,100,65,20,17,66,83,61,33,54,22,39,70)
+#standard dev steps:
+#first find the mean: mean(x)
+#find each datapoint's distance to the mean: x-mean
+#square of each datapoint's distance to the mean: (x-mean)^2
+#sum these distances: sum(x-mean)(x)^2
+#divide by n-1  data points in the dataset: (/ length(x)-1)
+#double check parenthesis
+s <- sqrt(sum(
+    (x-mean(x))^ 2 /
+      (length(x)-1)))
+print(s)
+#checking
+sd(x)
+# it works :) now use on dataset
+#use originial "age" variable, not the rounded variable you used earlier in the Figure section.
+st_dev <-sqrt(sum
+        ((centenarians$age-mean(centenarians$age))^2 /
+            (length(centenarians$age)-1)))
+print(st_dev)
+#checking
+sd(centenarians$age)
 ```
 
