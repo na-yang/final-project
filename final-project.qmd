@@ -6,14 +6,30 @@ editor: visual
 
 ## EPI 590R Final Project - Naly Yang
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Getting the data:
+```{r}
+#read in tidytuesdayR package
+install.packages("tidytuesdayR")
+#read the csv file 
+centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
+```
 
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## {gtsummary} table of descriptive statistics
 
 ```{r}
-1 + 1
+library(gtsummary)
+tbl_summary(
+	centenarians,
+	by = gender,
+	include = c(gender, age, place_of_death_or_residence,
+							still_alive),
+	label = list(
+		gender ~ "Gender",
+		age ~ "Age",
+		place_of_death_or_residence ~ "Place of Death/Residence",
+		still_alive ~ "Living Status"
+	),
+	missing_text = "Missing")
 ```
 
 You can add options to executable code like this
