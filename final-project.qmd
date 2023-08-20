@@ -14,6 +14,14 @@ install.packages("tidytuesdayR")
 centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
 ```
 
+Recoding data for regression analysis:
+```{r}
+#gender variable recoding. if gender= female, then gender1= 1. male= 0.
+centenarians$gender1 <- ifelse(centenarians$gender %in% c("female"),1,0)
+#still_alive recoding. if still_alive= alive, then still_alive1= 1.deceased= 0.
+centenarians$still_alive1 <- ifelse(centenarians$still_alive %in% c("alive"),1,0)
+```
+
 ## {gtsummary} table of descriptive statistics
 
 ```{r}
@@ -34,8 +42,28 @@ tbl_summary(
 
 ## Fit a regression and present well-formatted results from the regression
 
+Regression:
 ```{r}
-# testing commit
+linear_model <- lm(age ~ gender + still_alive,
+									 data = centenarians)
+
+uni_regression <- tbl_uvregression(
+	centenarians,
+	y = age,
+	include = c(gender, still_alive),
+	method = lm)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+Table:
+```{r}
+tbl_regression(
+	uni_regression,
+	intercept = TRUE,
+	label = list(
+	  age ~ "Age",
+		gender ~ "Gender",
+		still_alive ~ "Living Status"
+	))
+
+```
+
