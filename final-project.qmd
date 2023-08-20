@@ -49,17 +49,21 @@ tbl_summary(
 Regression:
 
 ```{r}
-linear_model <- lm(age ~ gender1 + still_alive1,
-									 data = centenarians)
+uni_regression <- tbl_uvregression(
+  centenarians,
+  y = age,
+  include = c(
+    gender1, still_alive1,
+  ),
+  method = lm )
 ```
 
-Table:
-
+Table (you are getting an error here)
 ```{r}
 #| label: tbl-regression
 #| tbl-cap: "This table contains regression results."
-tbl_regression(
-	linear_model,
+regress_table <- tbl_regression(
+	uni_regression,
 	intercept = TRUE,
 	label = list(
 	  age ~ "Age",
@@ -67,6 +71,12 @@ tbl_regression(
 		still_alive1 ~ "Living Status"
 	))
 ```
+
+Inline text (you can not resolve this until the error above is resolved):
+```{r}
+inline_text(uni_regression, variable = "age")
+```
+
 
 ## Creating a figure
 
