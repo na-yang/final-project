@@ -7,6 +7,7 @@ editor: visual
 ## EPI 590R Final Project - Naly Yang
 
 Getting the data:
+
 ```{r}
 #read in tidytuesdayR package
 install.packages("tidytuesdayR")
@@ -14,7 +15,7 @@ install.packages("tidytuesdayR")
 centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
 ```
 
-Recoding data for regression analysis:
+Recoding data to prepare for regression analysis:
 ```{r}
 #gender variable recoding. if gender= female, then gender1= 1. male= 0.
 centenarians$gender1 <- ifelse(centenarians$gender %in% c("female"),1,0)
@@ -23,7 +24,6 @@ centenarians$still_alive1 <- ifelse(centenarians$still_alive %in% c("alive"),1,0
 ```
 
 ## {gtsummary} table of descriptive statistics
-
 ```{r}
 library(gtsummary)
 tbl_summary(
@@ -44,26 +44,19 @@ tbl_summary(
 
 Regression:
 ```{r}
-linear_model <- lm(age ~ gender + still_alive,
+linear_model <- lm(age ~ gender1 + still_alive1,
 									 data = centenarians)
-
-uni_regression <- tbl_uvregression(
-	centenarians,
-	y = age,
-	include = c(gender, still_alive),
-	method = lm)
 ```
 
 Table:
 ```{r}
 tbl_regression(
-	uni_regression,
+	linear_model,
 	intercept = TRUE,
 	label = list(
 	  age ~ "Age",
-		gender ~ "Gender",
-		still_alive ~ "Living Status"
+		gender1 ~ "Gender",
+		still_alive1 ~ "Living Status"
 	))
-
 ```
 
