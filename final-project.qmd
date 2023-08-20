@@ -32,7 +32,7 @@ tbl_summary(
 	missing_text = "Missing")
 ```
 
-You can add options to executable code like this
+## Fit a regression and present well-formatted results from the regression
 
 ```{r}
 #| echo: false
