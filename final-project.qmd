@@ -25,6 +25,8 @@ centenarians$still_alive1 <- ifelse(centenarians$still_alive %in% c("alive"),1,0
 
 ## {gtsummary} table of descriptive statistics
 ```{r}
+#| label: tbl-descriptive
+#| tbl-cap: "This table contains descriptive statistics."
 library(gtsummary)
 tbl_summary(
 	centenarians,
@@ -50,6 +52,8 @@ linear_model <- lm(age ~ gender1 + still_alive1,
 
 Table:
 ```{r}
+#| label: tbl-regression
+#| tbl-cap: "This table contains regression results."
 tbl_regression(
 	linear_model,
 	intercept = TRUE,
@@ -58,5 +62,11 @@ tbl_regression(
 		gender1 ~ "Gender",
 		still_alive1 ~ "Living Status"
 	))
+```
+
+## Creating a figure
+
+```{r}
+
 ```
 
