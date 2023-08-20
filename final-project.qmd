@@ -16,6 +16,7 @@ centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascien
 ```
 
 Recoding data to prepare for regression analysis:
+
 ```{r}
 #gender variable recoding. if gender= female, then gender1= 1. male= 0.
 centenarians$gender1 <- ifelse(centenarians$gender %in% c("female"),1,0)
@@ -24,6 +25,7 @@ centenarians$still_alive1 <- ifelse(centenarians$still_alive %in% c("alive"),1,0
 ```
 
 ## {gtsummary} table of descriptive statistics
+
 ```{r}
 #| label: tbl-descriptive
 #| tbl-cap: "This table contains descriptive statistics."
@@ -45,12 +47,14 @@ tbl_summary(
 ## Fit a regression and present well-formatted results from the regression
 
 Regression:
+
 ```{r}
 linear_model <- lm(age ~ gender1 + still_alive1,
 									 data = centenarians)
 ```
 
 Table:
+
 ```{r}
 #| label: tbl-regression
 #| tbl-cap: "This table contains regression results."
@@ -66,6 +70,15 @@ tbl_regression(
 
 ## Creating a figure
 
+```{r}
+#round age data first. round down to nearest integer & create new vector for the roudned age.
+rounded_age <- floor(centenarians$age)
+#| label: fig-hist
+#| fig-cap: "This is a histogram of the rounded ages."
+hist(rounded_age)
+```
+
+## Write and use a function
 ```{r}
 
 ```
