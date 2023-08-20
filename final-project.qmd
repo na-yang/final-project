@@ -35,8 +35,7 @@ tbl_summary(
 ## Fit a regression and present well-formatted results from the regression
 
 ```{r}
-#| echo: false
-2 * 2
+# testing commit
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
