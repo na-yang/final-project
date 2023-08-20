@@ -88,6 +88,8 @@ rounded_age <- floor(centenarians$age)
 hist(rounded_age)
 ```
 
+@fig-hist contains a histogram and @tbl-regression a table of the regression results.
+
 ## Write and use a function
 
 standard deviation:
