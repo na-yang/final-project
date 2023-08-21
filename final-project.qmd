@@ -33,7 +33,7 @@ centenarians$gender1 <- ifelse(centenarians$gender %in% c("female"),1,0)
 centenarians$still_alive1 <- ifelse(centenarians$still_alive %in% c("alive"),1,0)
 ```
 
-## {gtsummary} table of descriptive statistics
+## {gtsummary} table of descriptive statistics (there is an error here with your footnote)
 
 ```{r}
 #| label: tbl-descriptive
