@@ -51,6 +51,7 @@ tbl_summary(
 		still_alive ~ "Living Status"
 	),
 	missing_text = "Missing")
+  footnote= "These are lists of the 100 known verified oldest people sorted in descending order by age in years and days. This data comes from Wikipedia List of verified oldest people via frankiethull on Github. Source= https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-30"
 ```
 
 ## Fit a regression and present well-formatted results from the regression
