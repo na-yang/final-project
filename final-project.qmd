@@ -9,7 +9,7 @@ editor: visual
 Getting the data:
 
 ```{r}
-#read in tidytuesdayR package
+#read in packages
 install.packages("tidytuesdayR")
 install.packages("tidyverse")
 install.packages("gtsummary")
@@ -17,14 +17,15 @@ install.packages("gtsummary")
 library(tidyverse)
 library(tidytuesdayR)
 library(gtsummary)
-#read the csv file 
+
+#using here::here
+centenarians <- read_csv(here::here("data", "centenarians.csv"))
+
+#or read the csv file manually
 centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
-readr::write_csv
-centenarians <- read_csv(here::here("centenarians.csv"))
 ```
 
 Recoding data to prepare for regression analysis:
-
 ```{r}
 #gender variable recoding. if gender= female, then gender1= 1. male= 0.
 centenarians$gender1 <- ifelse(centenarians$gender %in% c("female"),1,0)
