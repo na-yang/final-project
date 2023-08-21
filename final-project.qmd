@@ -60,6 +60,7 @@ uni_regression <- tbl_uvregression(
 
 Table (you are getting an error here)
 ```{r}
+#| error: true
 #| label: tbl-regression
 #| tbl-cap: "This table contains regression results."
 regress_table <- tbl_regression(
@@ -74,6 +75,7 @@ regress_table <- tbl_regression(
 
 Inline text (you can not resolve this until the error above is resolved):
 ```{r}
+#| error: true
 inline_text(uni_regression, variable = "age")
 ```
 
