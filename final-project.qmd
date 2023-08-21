@@ -20,7 +20,7 @@ library(gtsummary)
 #read the csv file 
 centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
 readr::write_csv
-centenarians <- read_csv(here::here)
+centenarians <- read_csv(here::here("centenarians.csv"))
 ```
 
 Recoding data to prepare for regression analysis:
