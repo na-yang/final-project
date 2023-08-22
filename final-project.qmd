@@ -35,7 +35,7 @@ centenarians$gender1 <- ifelse(centenarians$gender %in% c("female"),1,0)
 centenarians$still_alive1 <- ifelse(centenarians$still_alive %in% c("alive"),1,0)
 ```
 
-## {gtsummary} table of descriptive statistics (there is an error here with your footnote)
+## {gtsummary} table of descriptive statistics
 
 ```{r}
 #| label: tbl-descriptive
@@ -67,6 +67,10 @@ uni_regression <- tbl_uvregression(
     gender1, still_alive1,
   ),
   method = lm )
+
+#trying different regression
+linear_model <- lm(age ~ gender1 + still_alive1,
+									 data = centenarians)
 ```
 
 Table (you are getting an error here)
@@ -82,6 +86,7 @@ regress_table <- tbl_regression(
 		gender1 ~ "Gender",
 		still_alive1 ~ "Living Status"
 	))
+
 ```
 
 Inline text (you can not resolve this until the error above is resolved):
