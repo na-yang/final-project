@@ -60,39 +60,25 @@ tbl_summary(
 Regression:
 
 ```{r}
-uni_regression <- tbl_uvregression(
-  centenarians,
-  y = age,
-  include = c(
-    gender1, still_alive1,
-  ),
-  method = lm )
-
-#trying different regression
-linear_model <- lm(age ~ gender1 + still_alive1,
-									 data = centenarians)
+logistic_model <- glm(still_alive1 ~ gender1,
+											data = centenarians, family= binomial())
 ```
 
 Table (you are getting an error here)
 ```{r}
-#| error: true
 #| label: tbl-regression
 #| tbl-cap: "This table contains regression results."
 regress_table <- tbl_regression(
-	uni_regression,
-	intercept = TRUE,
+	logistic_model,
+	exponentiate = TRUE,
 	label = list(
-	  age ~ "Age",
-		gender1 ~ "Gender",
-		still_alive1 ~ "Living Status"
+		gender1 ~ "Gender"
 	))
-
 ```
 
-Inline text (you can not resolve this until the error above is resolved):
+Inline text (error here now):
 ```{r}
-#| error: true
-inline_text(uni_regression, variable = "age")
+inline_text(regress_table, variable = "age")
 ```
 
 
