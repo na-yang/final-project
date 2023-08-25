@@ -11,6 +11,9 @@ Source= https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/202
 
 Getting the data:
 ```{r}
+#| warning: false
+#| message: false
+
 #read in packages
 install.packages("tidytuesdayR")
 install.packages("tidyverse")
@@ -102,7 +105,7 @@ rounded_age <- floor(centenarians$age)
 hist(rounded_age)
 ```
 
-@fig-hist contains a histogram and @tbl-regression contains a table of the regression results.
+A histogram of age is found in @fig-hist and @tbl-regression contains a table of the regression results.
 
 ## Write and use a function
 
