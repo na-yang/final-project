@@ -64,7 +64,8 @@ logistic_model <- glm(still_alive1 ~ gender1,
 											data = centenarians, family= binomial())
 ```
 
-Table (you are getting an error here)
+Table:
+
 ```{r}
 #| label: tbl-regression
 #| tbl-cap: "This table contains regression results."
@@ -76,10 +77,18 @@ regress_table <- tbl_regression(
 	))
 ```
 
-Inline text (error here now):
+Inline text:
 ```{r}
-inline_text(regress_table, variable = "age")
+#pulling from a table
+inline_text(regress_table, variable = "gender1")
+
+#finding mean value using inline. Print inline
+stats <- list(n = nrow(data),
+              mean_age = mean(centenarians$age))
+
 ```
+
+There were `r stats$n` participants with a mean age of `r stats$mean_age`.
 
 
 ## Creating a figure
