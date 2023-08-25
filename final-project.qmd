@@ -75,6 +75,7 @@ regress_table <- tbl_regression(
 	label = list(
 		gender1 ~ "Gender"
 	))
+
 ```
 
 Inline text:
@@ -83,7 +84,7 @@ Inline text:
 inline_text(regress_table, variable = "gender1")
 
 #finding mean value using inline. Print inline
-stats <- list(n = nrow(data),
+stats <- list(n = nrow(centenarians),
               mean_age = mean(centenarians$age))
 
 ```
