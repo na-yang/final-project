@@ -78,7 +78,6 @@ regress_table <- tbl_regression(
 	label = list(
 		gender1 ~ "Gender"
 	))
-
 ```
 
 Inline text:
@@ -100,10 +99,15 @@ There were `r stats$n` participants with a mean age of `r stats$mean_age`.
 ```{r}
 #round age data first. round down to nearest integer & create new vector for the roudned age.
 rounded_age <- floor(centenarians$age)
+
+```
+
+```{r}
 #| label: fig-hist
 #| fig-cap: "This is a histogram of the rounded ages."
 hist(rounded_age)
 ```
+
 
 A histogram of age is found in @fig-hist and @tbl-regression contains a table of the regression results.
 
