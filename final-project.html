@@ -96,9 +96,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="epi-590r-final-project---naly-yang" class="level2">
 <h2 class="anchored" data-anchor-id="epi-590r-final-project---naly-yang">EPI 590R Final Project - Naly Yang</h2>
+<p>These are lists of the 100 known verified oldest people sorted in descending order by age in years and days. This data comes from Wikipedia List of verified oldest people via frankiethull on Github. Source= https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-30</p>
 <p>Getting the data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in tidytuesdayR package</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidytuesdayR"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The following package(s) will be installed:
@@ -107,10 +108,87 @@ These packages will be installed into "~/RSPH MPH/Courses/2023 FA/EPI 590R/final
 
 # Installing packages --------------------------------------------------------
 - Installing tidytuesdayR ...                   OK [linked from cache]
-Successfully installed 1 package in 37 milliseconds.</code></pre>
+Successfully installed 1 package in 32 milliseconds.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read the csv file </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>centenarians <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The following package(s) will be installed:
+- tidyverse [2.0.0]
+These packages will be installed into "~/RSPH MPH/Courses/2023 FA/EPI 590R/final-project/renv/library/R-4.1/x86_64-w64-mingw32".
+
+# Installing packages --------------------------------------------------------
+- Installing tidyverse ...                      OK [linked from cache]
+Successfully installed 1 package in 32 milliseconds.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"gtsummary"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The following package(s) will be installed:
+- gtsummary [1.7.2]
+These packages will be installed into "~/RSPH MPH/Courses/2023 FA/EPI 590R/final-project/renv/library/R-4.1/x86_64-w64-mingw32".
+
+# Installing packages --------------------------------------------------------
+- Installing gtsummary ...                      OK [linked from cache]
+Successfully installed 1 package in 32 milliseconds.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.1.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v dplyr     1.1.2     v readr     2.1.4
+v forcats   1.0.0     v stringr   1.5.0
+v ggplot2   3.4.3     v tibble    3.2.1
+v lubridate 1.9.2     v tidyr     1.3.0
+v purrr     1.0.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#using here::here</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>centenarians <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"centenarians.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 200 Columns: 8
+-- Column specification --------------------------------------------------------
+Delimiter: ","
+chr  (4): name, place_of_death_or_residence, gender, still_alive
+dbl  (2): rank, age
+date (2): birth_date, death_date
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or read the csv file manually</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>centenarians <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 200 Columns: 8
 -- Column specification --------------------------------------------------------
@@ -125,48 +203,48 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
 </div>
 <p>Recoding data to prepare for regression analysis:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#gender variable recoding. if gender= female, then gender1= 1. male= 0.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>centenarians<span class="sc">$</span>gender1 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(centenarians<span class="sc">$</span>gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"female"</span>),<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#still_alive recoding. if still_alive= alive, then still_alive1= 1.deceased= 0.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>centenarians<span class="sc">$</span>still_alive1 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(centenarians<span class="sc">$</span>still_alive <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"alive"</span>),<span class="dv">1</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#gender variable recoding. if gender= female, then gender1= 1. male= 0.</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>centenarians<span class="sc">$</span>gender1 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(centenarians<span class="sc">$</span>gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"female"</span>),<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#still_alive recoding. if still_alive= alive, then still_alive1= 1.deceased= 0.</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>centenarians<span class="sc">$</span>still_alive1 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(centenarians<span class="sc">$</span>still_alive <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"alive"</span>),<span class="dv">1</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="gtsummary-table-of-descriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="gtsummary-table-of-descriptive-statistics">{gtsummary} table of descriptive statistics</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_summary</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    centenarians,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> gender,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">include =</span> <span class="fu">c</span>(gender, age, place_of_death_or_residence,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                            still_alive),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        gender <span class="sc">~</span> <span class="st">"Gender"</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        age <span class="sc">~</span> <span class="st">"Age"</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        place_of_death_or_residence <span class="sc">~</span> <span class="st">"Place of Death/Residence"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        still_alive <span class="sc">~</span> <span class="st">"Living Status"</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing_text =</span> <span class="st">"Missing"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_summary</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    centenarians,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> gender,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">include =</span> <span class="fu">c</span>(gender, age, place_of_death_or_residence,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                            still_alive),</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        gender <span class="sc">~</span> <span class="st">"Gender"</span>,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        age <span class="sc">~</span> <span class="st">"Age"</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        place_of_death_or_residence <span class="sc">~</span> <span class="st">"Place of Death/Residence"</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        still_alive <span class="sc">~</span> <span class="st">"Living Status"</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing_text =</span> <span class="st">"Missing"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="tbl-descriptive" class="anchored">
 
-<div id="ovplnxfwzf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ovplnxfwzf table {
+<div id="mhwbrmlsmf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mhwbrmlsmf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ovplnxfwzf thead, #ovplnxfwzf tbody, #ovplnxfwzf tfoot, #ovplnxfwzf tr, #ovplnxfwzf td, #ovplnxfwzf th {
+#mhwbrmlsmf thead, #mhwbrmlsmf tbody, #mhwbrmlsmf tfoot, #mhwbrmlsmf tr, #mhwbrmlsmf td, #mhwbrmlsmf th {
   border-style: none;
 }
 
-#ovplnxfwzf p {
+#mhwbrmlsmf p {
   margin: 0;
   padding: 0;
 }
 
-#ovplnxfwzf .gt_table {
+#mhwbrmlsmf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -192,12 +270,12 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-left-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_caption {
+#mhwbrmlsmf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ovplnxfwzf .gt_title {
+#mhwbrmlsmf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -209,7 +287,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-bottom-width: 0;
 }
 
-#ovplnxfwzf .gt_subtitle {
+#mhwbrmlsmf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -221,7 +299,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-top-width: 0;
 }
 
-#ovplnxfwzf .gt_heading {
+#mhwbrmlsmf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -233,13 +311,13 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-right-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_bottom_border {
+#mhwbrmlsmf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_col_headings {
+#mhwbrmlsmf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -254,7 +332,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-right-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_col_heading {
+#mhwbrmlsmf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -274,7 +352,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   overflow-x: hidden;
 }
 
-#ovplnxfwzf .gt_column_spanner_outer {
+#mhwbrmlsmf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -286,15 +364,15 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   padding-right: 4px;
 }
 
-#ovplnxfwzf .gt_column_spanner_outer:first-child {
+#mhwbrmlsmf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ovplnxfwzf .gt_column_spanner_outer:last-child {
+#mhwbrmlsmf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ovplnxfwzf .gt_column_spanner {
+#mhwbrmlsmf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -306,11 +384,11 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   width: 100%;
 }
 
-#ovplnxfwzf .gt_spanner_row {
+#mhwbrmlsmf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ovplnxfwzf .gt_group_heading {
+#mhwbrmlsmf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -336,7 +414,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   text-align: left;
 }
 
-#ovplnxfwzf .gt_empty_group_heading {
+#mhwbrmlsmf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -351,15 +429,15 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   vertical-align: middle;
 }
 
-#ovplnxfwzf .gt_from_md > :first-child {
+#mhwbrmlsmf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ovplnxfwzf .gt_from_md > :last-child {
+#mhwbrmlsmf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ovplnxfwzf .gt_row {
+#mhwbrmlsmf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -378,7 +456,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   overflow-x: hidden;
 }
 
-#ovplnxfwzf .gt_stub {
+#mhwbrmlsmf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -391,7 +469,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   padding-right: 5px;
 }
 
-#ovplnxfwzf .gt_stub_row_group {
+#mhwbrmlsmf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -405,15 +483,15 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   vertical-align: top;
 }
 
-#ovplnxfwzf .gt_row_group_first td {
+#mhwbrmlsmf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ovplnxfwzf .gt_row_group_first th {
+#mhwbrmlsmf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ovplnxfwzf .gt_summary_row {
+#mhwbrmlsmf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -423,16 +501,16 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   padding-right: 5px;
 }
 
-#ovplnxfwzf .gt_first_summary_row {
+#mhwbrmlsmf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_first_summary_row.thick {
+#mhwbrmlsmf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ovplnxfwzf .gt_last_summary_row {
+#mhwbrmlsmf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -442,7 +520,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-bottom-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_grand_summary_row {
+#mhwbrmlsmf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -452,7 +530,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   padding-right: 5px;
 }
 
-#ovplnxfwzf .gt_first_grand_summary_row {
+#mhwbrmlsmf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -462,7 +540,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-top-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_last_grand_summary_row_top {
+#mhwbrmlsmf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -472,11 +550,11 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-bottom-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_striped {
+#mhwbrmlsmf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ovplnxfwzf .gt_table_body {
+#mhwbrmlsmf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -485,7 +563,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-bottom-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_footnotes {
+#mhwbrmlsmf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -499,7 +577,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-right-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_footnote {
+#mhwbrmlsmf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -508,7 +586,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   padding-right: 5px;
 }
 
-#ovplnxfwzf .gt_sourcenotes {
+#mhwbrmlsmf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -522,7 +600,7 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   border-right-color: #D3D3D3;
 }
 
-#ovplnxfwzf .gt_sourcenote {
+#mhwbrmlsmf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -530,63 +608,63 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
   padding-right: 5px;
 }
 
-#ovplnxfwzf .gt_left {
+#mhwbrmlsmf .gt_left {
   text-align: left;
 }
 
-#ovplnxfwzf .gt_center {
+#mhwbrmlsmf .gt_center {
   text-align: center;
 }
 
-#ovplnxfwzf .gt_right {
+#mhwbrmlsmf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ovplnxfwzf .gt_font_normal {
+#mhwbrmlsmf .gt_font_normal {
   font-weight: normal;
 }
 
-#ovplnxfwzf .gt_font_bold {
+#mhwbrmlsmf .gt_font_bold {
   font-weight: bold;
 }
 
-#ovplnxfwzf .gt_font_italic {
+#mhwbrmlsmf .gt_font_italic {
   font-style: italic;
 }
 
-#ovplnxfwzf .gt_super {
+#mhwbrmlsmf .gt_super {
   font-size: 65%;
 }
 
-#ovplnxfwzf .gt_footnote_marks {
+#mhwbrmlsmf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ovplnxfwzf .gt_asterisk {
+#mhwbrmlsmf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ovplnxfwzf .gt_indent_1 {
+#mhwbrmlsmf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ovplnxfwzf .gt_indent_2 {
+#mhwbrmlsmf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ovplnxfwzf .gt_indent_3 {
+#mhwbrmlsmf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ovplnxfwzf .gt_indent_4 {
+#mhwbrmlsmf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ovplnxfwzf .gt_indent_5 {
+#mhwbrmlsmf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -734,119 +812,86 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
 <h2 class="anchored" data-anchor-id="fit-a-regression-and-present-well-formatted-results-from-the-regression">Fit a regression and present well-formatted results from the regression</h2>
 <p>Regression:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>uni_regression <span class="ot">&lt;-</span> <span class="fu">tbl_uvregression</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  centenarians,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> age,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">include =</span> <span class="fu">c</span>(</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    gender1, still_alive1,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> lm )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>logistic_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(still_alive1 <span class="sc">~</span> gender1,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">data =</span> centenarians, <span class="at">family=</span> <span class="fu">binomial</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Table (you are getting an error here)</p>
+<p>Table:</p>
 <div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>regress_table <span class="ot">&lt;-</span> <span class="fu">tbl_regression</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    uni_regression,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">intercept =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      age <span class="sc">~</span> <span class="st">"Age"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        gender1 <span class="sc">~</span> <span class="st">"Gender"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        still_alive1 <span class="sc">~</span> <span class="st">"Living Status"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! `broom::tidy()` failed to tidy the model.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! `tidy_parameters()` also failed.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>x parametersNANAfor `broom.helpers::tidy_parameters()`.assert_package("parameters", fn = "broom.helpers::tidy_parameters()")TRUE</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! `broom::tidy()` failed to tidy the model.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! `tidy_parameters()` also failed.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>x parametersNANAfor `broom.helpers::tidy_parameters()`.assert_package("parameters", fn = "broom.helpers::tidy_parameters()")TRUE</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>x There was an error calling `tidy_fun()`. Most likely, this is because the
-function supplied in `tidy_fun=` was misspelled, does not exist, is not
-compatible with your object, or was missing necessary arguments (e.g. `conf.level=` or `conf.int=`). See error message below.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>regress_table <span class="ot">&lt;-</span> <span class="fu">tbl_regression</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    logistic_model,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">exponentiate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        gender1 <span class="sc">~</span> <span class="st">"Gender"</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-regression" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="This table contains regression results.">
 <div class="panel-caption table-caption">
 <p><strong>?(caption)</strong></p>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output cell-output-error quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<pre><code>Error:
-! Error: ! Unable to tidy `x`.</code></pre>
 </div>
 </div>
-</div>
-</div>
-<p>Inline text (you can not resolve this until the error above is resolved):</p>
+<p>Inline text:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inline_text</span>(uni_regression, <span class="at">variable =</span> <span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error:
-! Error in `variable=` argument input. Select from 'gender1',
-  'still_alive1'</code></pre>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pulling from a table</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">inline_text</span>(regress_table, <span class="at">variable =</span> <span class="st">"gender1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1.00 (95% CI 0.30, 3.30; p&gt;0.9)"</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#finding mean value using inline. Print inline</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">nrow</span>(data),</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_age =</span> <span class="fu">mean</span>(centenarians<span class="sc">$</span>age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>There were participants with a mean age of 114.0591923.</p>
 </section>
 <section id="creating-a-figure" class="level2">
 <h2 class="anchored" data-anchor-id="creating-a-figure">Creating a figure</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#round age data first. round down to nearest integer &amp; create new vector for the roudned age.</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rounded_age <span class="ot">&lt;-</span> <span class="fu">floor</span>(centenarians<span class="sc">$</span>age)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "This is a histogram of the rounded ages."</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(rounded_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#round age data first. round down to nearest integer &amp; create new vector for the roudned age.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>rounded_age <span class="ot">&lt;-</span> <span class="fu">floor</span>(centenarians<span class="sc">$</span>age)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "This is a histogram of the rounded ages."</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(rounded_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="final-project_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p><strong>?@fig-hist</strong> contains a histogram and <strong>?@tbl-regression</strong> a table of the regression results.</p>
+<p><strong>?@fig-hist</strong> contains a histogram and <strong>?@tbl-regression</strong> contains a table of the regression results.</p>
 </section>
 <section id="write-and-use-a-function" class="level2">
 <h2 class="anchored" data-anchor-id="write-and-use-a-function">Write and use a function</h2>
 <p>standard deviation:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#testing first by making a dataset</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">4</span>,<span class="dv">67</span>,<span class="dv">100</span>,<span class="dv">65</span>,<span class="dv">20</span>,<span class="dv">17</span>,<span class="dv">66</span>,<span class="dv">83</span>,<span class="dv">61</span>,<span class="dv">33</span>,<span class="dv">54</span>,<span class="dv">22</span>,<span class="dv">39</span>,<span class="dv">70</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#standard dev steps:</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#first find the mean: mean(x)</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#find each datapoint's distance to the mean: x-mean</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#square of each datapoint's distance to the mean: (x-mean)^2</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#sum these distances: sum(x-mean)(x)^2</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#divide by n-1  data points in the dataset: (/ length(x)-1)</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#double check parenthesis</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    (x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>      (<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>)))</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#testing first by making a dataset</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">4</span>,<span class="dv">67</span>,<span class="dv">100</span>,<span class="dv">65</span>,<span class="dv">20</span>,<span class="dv">17</span>,<span class="dv">66</span>,<span class="dv">83</span>,<span class="dv">61</span>,<span class="dv">33</span>,<span class="dv">54</span>,<span class="dv">22</span>,<span class="dv">39</span>,<span class="dv">70</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#standard dev steps:</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#first find the mean: mean(x)</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#find each datapoint's distance to the mean: x-mean</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#square of each datapoint's distance to the mean: (x-mean)^2</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#sum these distances: sum(x-mean)(x)^2</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#divide by n-1  data points in the dataset: (/ length(x)-1)</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#double check parenthesis</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    (x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>      (<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>)))</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28.08016</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#checking</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#checking</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28.08016</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># it works :) now use on dataset</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#use originial "age" variable, not the rounded variable you used earlier in the Figure section.</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>st_dev <span class="ot">&lt;-</span><span class="fu">sqrt</span>(sum</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        ((centenarians<span class="sc">$</span>age<span class="sc">-</span><span class="fu">mean</span>(centenarians<span class="sc">$</span>age))<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            (<span class="fu">length</span>(centenarians<span class="sc">$</span>age)<span class="sc">-</span><span class="dv">1</span>)))</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(st_dev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># it works :) now use on dataset</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#use originial "age" variable, not the rounded variable you used earlier in the Figure section.</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>st_dev <span class="ot">&lt;-</span><span class="fu">sqrt</span>(sum</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        ((centenarians<span class="sc">$</span>age<span class="sc">-</span><span class="fu">mean</span>(centenarians<span class="sc">$</span>age))<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>            (<span class="fu">length</span>(centenarians<span class="sc">$</span>age)<span class="sc">-</span><span class="dv">1</span>)))</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(st_dev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.926595</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#checking</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(centenarians<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#checking</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(centenarians<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.926595</code></pre>
 </div>
