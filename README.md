@@ -11,3 +11,6 @@ download the csv file:
 
 or read in the data manually:
 centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
+
+#Analysis
+render final-project.qmd
